@@ -41,19 +41,19 @@
 		}
 		.box{
 			height: 600px;
-			width: 1445px;
+			/* width: 1445px; */
 			margin: 0 auto;
 			position: relative;
 			overflow: hidden;
 		}
 		.slider{
 			height: 600px;
-			width: 10115px;
+			/* width: 10115px; */
 			position: absolute;
-			left: -1445px;
+			/* left: -1445px; */
 		}
 		.slide{
-			width: 1445px;
+			/* width: 1445px; */
 			overflow: hidden;
 			float: left;
 		}
@@ -373,7 +373,20 @@
 	var right = document.getElementById("right");
 	var ybswtxt1 = document.getElementsByClassName("ybswtxt1");
 	var wsndtxt1 = document.getElementsByClassName("wsndtxt1");
-	var zshytxt1 = document.getElementsByClassName("zshytxt1")
+	var zshytxt1 = document.getElementsByClassName("zshytxt1");
+	console.log(window.screen.availWidth);
+	var width = parseInt(window.screen.availWidth);
+	var lwidth = -width;
+	document.getElementsByClassName("box")[0].style.width = width + "px";
+	document.getElementsByClassName("slider")[0].style.width = width * 7 + "px";
+	document.getElementsByClassName("slider")[0].style.left = lwidth + "px";
+	document.getElementsByClassName("slide")[0].style.width = width + "px";
+	document.getElementsByClassName("slide")[1].style.width = width + "px";
+	document.getElementsByClassName("slide")[2].style.width = width + "px";
+	document.getElementsByClassName("slide")[3].style.width = width + "px";
+	document.getElementsByClassName("slide")[4].style.width = width + "px";
+	document.getElementsByClassName("slide")[5].style.width = width + "px";
+	document.getElementsByClassName("slide")[6].style.width = width + "px";
 	window.onscroll = function(){
 		var h = parseInt(document.body.scrollTop || document.documentElement.scrollTop);
 		console.log(h);
@@ -452,9 +465,9 @@
 		if(!isMoving){
 			isMoving = true;
 			index++;
-			animate(slider,{left:-1445*index},function(){
+			animate(slider,{left:lwidth*index},function(){
 				if(index === 6){
-					slider.style.left = "-1445px";
+					slider.style.left = lwidth + "px";
 					index = 1;
 				}
 				isMoving = false;
@@ -467,9 +480,9 @@
 		}
 		isMoving = true;
 		index--;
-		animate(slider,{left:-1445*index},function(){
+		animate(slider,{left:lwidth*index},function(){
 			if(index===0){
-				slider.style.left="-7225px";
+				slider.style.left=lwidth*5 + "px";
 				index = 5;
 			}
 			isMoving = false;
